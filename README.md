@@ -1,6 +1,6 @@
 
 # RosProyect
-## This is a schoolar proyect to control a mobile robot using ROS through an interface by serial communication with an xbox controller
+## This is a University proyect to control a mobile robot using ROS, an interface should display what the sensors read and it should indicate where the robot is moving, raspberry pi must use serial communication, an xbox controller ( or any other videogame control) has to be used to move the robothrough a
 Important notes
 
 
@@ -26,12 +26,12 @@ A window will appear, just ignore everything and lick "ok"
 To install openCV for python in the raspberry pi follow the steps from:
 > https://github.com/tizianofiorenzani/how_do_drones_work/blob/master/opencv/OPENCV_INSTALL.txt
 
-Run video.py example
+to check if everything istllaed correctly Run video.py example, the idea is to teleoperate the robot, so we must see the video from another computer.
 To stream the video through ssh run the following command:
 ```
 ssh -X user@ip_user 
 ```
- then run the opencv video example, and you should be able to see the video
+ then run the opencv video example, and you should be able to see the video in your computer. It is importan to remember that both the raspberry pi and your computer must be connected to the same wifi
  
 ## Tkinter
 
