@@ -38,17 +38,13 @@ def callback(data):
         rospy.loginfo("detente")
         pub.publish("stop")
 
-    #rospy.loginfo(data.axes[2])
-    #pub.publish(twist)
+  
 
-# Intializes everything
+
 def start():
-    # publishing to "turtle1/cmd_vel" to control turtle1
     global pub
     pub = rospy.Publisher('Xbox', String)
-    # subscribed to joystick inputs on topic "joy"
     rospy.Subscriber("joy", Joy, callback)
-    # starts the node
     rospy.init_node('control')
     rospy.spin()
 
