@@ -65,3 +65,12 @@ Be careful at the moment you type the distribution, e.g. kinetic, melodic, indig
 ```
 $ sudo apt-get install ros-indigo-joy
 ```
+in case that ros does not found the package type the following in the terminal
+```
+sudo sh -c 'echo "deb http://packages.ros.org/ros-shadow-fixed/ubuntu xenial main $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+sudo apt-get install libusb-1.0-0-dev
+
+```
+Then update and finally install the joy node
+
