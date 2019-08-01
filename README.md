@@ -1,6 +1,6 @@
 
 # RosProyect
-## This is a University proyect to control a mobile robot using ROS, an interface should display what the sensors read and it should indicate where the robot is moving, raspberry pi must use serial communication, an xbox controller ( or any other videogame control) has to be used to move the robothrough a
+## This is a University proyect to control a mobile robot using ROS, an interface should display what the sensors read and it should indicate where the robot is moving, raspberry pi must use serial communication, an xbox controller ( or any other videogame control) hast to be used to move it
 Important notes
 
 
