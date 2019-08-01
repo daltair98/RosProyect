@@ -43,10 +43,7 @@ def callback(data):
 
 # Intializes everything
 def start():
-    # publishing to "turtle1/cmd_vel" to control turtle1
     global pub
-    global ser
-    ser = serial.Serial("/dev/ttyACM5", baudrate = 115200)
     pub = rospy.Publisher('Xbox', String, queue_size = 20)
     # subscribed to joystick inputs on topic "joy"
     rospy.Subscriber("joy", Joy, callback)
