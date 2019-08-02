@@ -5,6 +5,7 @@ from Tkinter import *
 import rospy
 from interface.msg import gps_data
 from std_msgs.msg import String
+from Interface.msg import Ip
 from PIL import Image, ImageTk
 
 class App():
@@ -14,12 +15,13 @@ class App():
         self.root.geometry("720x480")
         self.root.wm_title("Serial Communication") #Makes the title that will appear in the top left
         self.root.config(background = "#FFFFFF")
-        self.background = tk.PhotoImage(file="/home/lazaropa/catkin_ws/src/interface/images/background.png") #Cambiar por la ruta donde se encuentre la imagen
+        self.background = tk.PhotoImage(file="/home/rodrigo/catkin_ws/src/Interface/images/background.png") #Cambiar por la ruta donde se encuentre la imagen
         self.back = tk.Label(image=self.background)
         self.back.place(x=0,y=0,relwidth=1,relheight=1)
         rospy.init_node('listener')
-        self.sub = rospy.Subscriber("gps_data", gps_data, self.GPS_Downloading)
-        self.sub = rospy.Subscriber("Xbox", String, self.Xbox_control)
+        self.subGPS = rospy.Subscriber("gps_data", gps_data, self.GPS_Downloading)
+        self.subXbox = rospy.Subscriber("Xbox", String, self.Xbox_control)
+        self.subUser = rospy.Subscriber("Ip", Ip, self.Ip_User_Slave)
 
         #UPLEFT rame and its contents
         self.upLeftFrame = Frame(self.root, width=300, height = 600, bg="#045D69")
@@ -39,8 +41,6 @@ class App():
         #MIDDLE Frame and its contents
         self.middleFrame = Frame(self.root, width=180, height = 40, bg="#045D69")
         self.middleFrame.grid(row=0, column=1, padx=60, pady=0)
-
-        Label(text="usuario@192.168.1.99",fg="black",bg="#68A6DB",font=("Arial",11)).place(x=280, y=4)
 
         #UPRIGHT Frame and its contents
         self.upRightFrame = Frame(self.root, width=300, height = 600, bg="#045D69")
@@ -76,10 +76,12 @@ class App():
 
        self.root.after(1000, self, self.GPS_Downloading)
 
+    def Ip_User_Slave(self, data):
+        Label(text=data.Ip,fg="black",bg="#68A6DB",font=("Arial",11)).place(x=280, y=4)
 
     def Xbox_control(self,data):
        if data.data=="aa":
-            load = Image.open("/home/lazaropa/catkin_ws/src/interface/images/up.png")
+            load = Image.open("/home/rodrigo/catkin_ws/src/Interface/images/up.png")
             load = load.resize((100,100),Image.ANTIALIAS)
             render = ImageTk.PhotoImage(load)
             img = Label( image=render)
@@ -87,7 +89,7 @@ class App():
             img.place(x=310, y=190)
 
        elif data.data=="bb":
-            load=Image.open("/home/lazaropa/catkin_ws/src/interface/images/down.png")
+            load=Image.open("/home/rodrigo/catkin_ws/src/Interface/images/down.png")
             load = load.resize((100,100),Image.ANTIALIAS)
             render = ImageTk.PhotoImage(load)
             img = Label( image=render)
@@ -95,7 +97,7 @@ class App():
             img.place(x=310, y=190)
 
        elif data.data=="cc":
-            load=Image.open("/home/lazaropa/catkin_ws/src/interface/images/left.png")
+            load=Image.open("/home/rodrigo/catkin_ws/src/Interface/images/left.png")
             load = load.resize((100,100),Image.ANTIALIAS)
             render = ImageTk.PhotoImage(load)
             img = Label( image=render)
@@ -103,7 +105,7 @@ class App():
             img.place(x=310, y=190)
 
        elif data.data=="dd":
-            load=Image.open("/home/lazaropa/catkin_ws/src/interface/images/right.png")
+            load=Image.open("/home/rodrigo/catkin_ws/src/Interface/images/right.png")
             load = load.resize((100,100),Image.ANTIALIAS)
             render = ImageTk.PhotoImage(load)
             img = Label( image=render)
@@ -111,7 +113,7 @@ class App():
             img.place(x=310, y=190)
 
        else:
-            load=Image.open("/home/lazaropa/catkin_ws/src/interface/images/stop.jpg")
+            load=Image.open("/home/rodrigo/catkin_ws/src/Interface/images/stop.jpg")
             load = load.resize((100,100),Image.ANTIALIAS)
             render = ImageTk.PhotoImage(load)
             img = Label( image=render)
