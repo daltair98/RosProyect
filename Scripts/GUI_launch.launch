@@ -1,7 +1,7 @@
 <launch>
 
-<node name = "listener" pkg = "beginner_tutorials" type = "Nodo_GUI.py" output = "screen"/>
-
-<node name = "talker" pkg = "beginner_tutorials" type = "Talker_GUI.py" output = "screen"/>
+<node name = "GUI" pkg = "Interface" type = "Nodo_GUI.py" output = "screen"/>
+<node name = "joy" pkg = "joy" type = "joy_node" output = "screen"/>
+<node name = "Xbox" pkg = "Interface" type = "Nodo_Control_Transmiter.py" output = "screen"/>
 
 </launch>
