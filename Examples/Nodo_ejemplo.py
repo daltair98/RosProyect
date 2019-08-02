@@ -9,6 +9,7 @@ master.geometry("1280x720")
 def callback():
     #print "click!"
     load = Image.open("hola.jpg")
+    load = load.resize((250, 250), Image.ANTIALIAS)
     render = ImageTk.PhotoImage(load)
     img = Label( image=render)
     img.image = render
