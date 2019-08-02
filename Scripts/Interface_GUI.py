@@ -9,7 +9,6 @@ from PIL import Image, ImageTk
 
 class App():
     def __init__(self):
-        color_LightBlue = '#045D69'
 
         self.root = tk.Tk()
         self.root.geometry("720x480")
