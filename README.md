@@ -74,3 +74,12 @@ sudo apt-get install libusb-1.0-0-dev
 ```
 Then update and finally install the joy node
 
+## Naming the files
+The standar to name an individual proyect per sensor must be
+> [NameOfModule]_module
+ 
+And the node python file
+> Node_[NameOfModule]
+ 
+The ROS master needs to have the same custom messages as the slave in order to subscribe and gather the information, the name has to be
+> [NameOfModule]_data
